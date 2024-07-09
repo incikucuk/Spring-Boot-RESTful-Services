@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 
         Optional<User> optionalUser = userRepository.findByEmail(userDto.getEmail()); //db'de boyle bir kullanıcı var mı kontrolü yapılacak
         if(optionalUser.isPresent()){
-            throw new EmailAlreadyExistsException("Email Already Exists for User");
+            throw new EmailAlreadyExistsException("Email Already Exists For User");
         }
 
         User user = AutoUserMapper.MAPPER.mapToUser(userDto);  //used Map structure

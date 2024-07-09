@@ -2,12 +2,16 @@ package com.javaguide.spring_boot_restful_webservices.controller;
 
 import com.javaguide.spring_boot_restful_webservices.dto.UserDto;
 import com.javaguide.spring_boot_restful_webservices.entity.User;
+import com.javaguide.spring_boot_restful_webservices.exception.ErrorDetail;
+import com.javaguide.spring_boot_restful_webservices.exception.ResourceNotFoundException;
 import com.javaguide.spring_boot_restful_webservices.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -55,4 +59,17 @@ public class UserController {
         userService.deleteUser(userId);
         return  new ResponseEntity<>("User successfully deleted!",HttpStatus.OK);
     }
+
+   /* @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorDetail> handleResourceFoundException(ResourceNotFoundException exception,
+                                                                    WebRequest webRequest){
+        ErrorDetail errorDetail = new ErrorDetail(
+                LocalDateTime.now(),
+                exception.getMessage(),
+                webRequest.getDescription(false),
+                "USER_NOT_FOUND"
+        );
+        return new ResponseEntity<>(errorDetail, HttpStatus.NOT_FOUND);
+    }
+    */
 }

@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("api/users")
 public class UserController {
-    private UserService userService;   //dependency injection @AllArgsConstructor annt kullanılarak da yapılabilir.
+    private UserService userService;   //dependency injection @AllArgsConstructor annt. kullanılarak da yapılabilir.
 
     //build create User REST API
     @PostMapping

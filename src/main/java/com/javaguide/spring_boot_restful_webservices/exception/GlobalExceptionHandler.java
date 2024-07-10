@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
                 LocalDateTime.now(),
                 exception.getMessage(),
                 webRequest.getDescription(false),
-                "USER_NOT_FOUND"
+                "USER_NOT_FOUND."
         );
         return new ResponseEntity<>(errorDetail, HttpStatus.NOT_FOUND);
     }
